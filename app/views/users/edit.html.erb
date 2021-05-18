@@ -1,2 +1,33 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<p id="notice"></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+    <h2>User info</h2>
+    <%= form_with model: @user, local: true do |t| %>
+       <form> 
+        <div class="form-group">
+          <label for="user_name">Name</label>
+          <!--<input class="form-control name" type="text" value="1111" name="user[name]" id="user_name">-->
+          <%= t.text_field :name, class:"form-control name" %>
+        </div>
+        <div class="form-group">
+          <label for="user_image">Image</label>
+          <!--<input value="{}" data-reference="74ae3179faea391669e42dae4d4e8048" type="hidden" name="user[profile_image]"><input class="form-control-file user_image" data-reference="74ae3179faea391669e42dae4d4e8048" include_hidden="false" type="file" name="user[profile_image]" id="user_profile_image">-->
+          <%= t.attachment_field :profile_image %>
+        </div>
+        <div class="form-group">
+          <label for="user_introduction">Introduction</label>
+        <!--<textarea class="form-control introduction" name="user[introduction]" id="user_introduction"></textarea>-->
+          <%= t.text_area :introduction, class:"form-control introduction" %>
+        </div>
+        <div class="form-group">
+        <!--<input type="submit" name="commit" value="Update User" class="btn btn-secondary" data-disable-with="Update User">-->
+          <%= t.submit "Update User", class:"btn btn-secondary" %>
+        </div>
+        
+      </form>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,2 +1,39 @@
-<h1>Books#edit</h1>
-<p>Find me in app/views/books/edit.html.erb</p>
+<p id="notice"></p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+  		<h1>Editing Book</h1>
+  		<%= form_with model: @book, local: true do |t| %>
+    	  <form>
+  		    <div class="form-group">
+            <label for="book_title">Title</label>
+            <!--<input class="form-control book_title" type="text" value="猫猫猫猫猫" name="book[title]" id="book_title">-->
+            <p><%= t.text_field :title, class:"form-control book_title" %></p>
+            
+            
+          </div>
+          <div class="form-group">
+            <label for="book_opinion">Opinion</label>
+            <!--<textarea class="form-control book_body" name="book[body]" id="book_body">ddddd</textarea>-->
+            <p><%= t.text_area :body, class:"form-control book_body" %></p>
+            
+            
+          </div>
+          <div class="form-group">
+            <!--<input type="submit" name="commit" value="Update Book" class="btn btn-success" data-disable-with="Update Book">-->
+            <%= t.submit 'Update Book', class:"btn btn-success" %>
+            
+          </div>
+        </form>
+      <% end %>    
+  		    <!--<a class="book_35102" href="/books/35102">Show</a> |-->
+  		    <p>
+  		      <%= link_to "Show", book_path(@book.id) %>
+  		      |
+  		    <!--<a class="back" href="/books">Back</a>-->
+  		      <%= link_to "back", books_path(@book.id) %>
+  		    </p>
+    </div>
+  </div>
+</div>

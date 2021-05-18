@@ -1,31 +1,12 @@
-<p id="notice"></p>
+<p class="notice"></p>
 
 <div class="container px-5 px-sm-0">
   
   <%= render 'books/list', user: @user, book: @book %>
-  <!--<div class="row">-->
-  <!--  <div class="col-md-3">-->
-  <!--    <h2>User info</h2>-->
-  <!--    <%#= attachment_image_tag @profile_images, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg", size:'100x100' %>-->
-      <%#= image_tag('person.jpg') %>
-      <!--<img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg">-->
-      
-  <!--    <table class="table">-->
-        <%# @user.each do |users| %>
-  <!--      <tbody>-->
-  <!--        <tr>-->
-  <!--          <th>name</th> -->
-  <!--          <th><%#= user.name %></th>-->
-  <!--        </tr>-->
-  <!--        <tr>-->
-  <!--          <th>introduction </th>-->
-  <!--          <th><%#= user.introduction %></th>-->
-  <!--        </tr>-->
-        <%# end %>
-  <!--      </tbody>-->
+  
         
       
-    
+   
     
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
@@ -41,11 +22,12 @@
         <tbody>
           <% @books.each do |books| %>
           <tr>
+            
             <td>
-              <%= attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
+              <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
             </td>
             <td>
-              <%= books.title %>
+              <%= link_to books.title, book_path(books.id) %>
             </td>
             <td>
               <%= books.body %>
@@ -55,9 +37,7 @@
         </tbody>
       </table>
     </div>
-    
-    
-  </div>
+   
 </div>
 
 
