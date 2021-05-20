@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   def index
     @user = current_user
     # @profile_images = current_user
-    # @users = User.all     
+    @users = User.all
     # (params[:id]).reverse_order
     @books = Book.all
     # @profile_image = User.all
@@ -26,13 +26,17 @@ class BooksController < ApplicationController
 
   
   def show
-    @book = Book.find(params[:id]) 
+    # @book = Book.find(params[:id])
+    @book = Book.new
     @user = @book.user
     @books = Book.all
   end
 
   def edit
     @books = Book.find(params[:id])
+    if @books != current_user
+      redirect_to
+    end
   end
   
   def update

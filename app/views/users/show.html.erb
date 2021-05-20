@@ -18,7 +18,8 @@
         </tr>
       </thead>
   		<tbody>
-  		  <%# @book.each do |book| %>
+  		  <%# if @user.id==@current_user.id %>
+  		  <% @books.each do |books| %>
   	    <tr>
           <td class="text-center">          
           
@@ -26,12 +27,13 @@
     	      <%#= attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
     	    </td>
           <td>
-            <%= link_to @book.title, book_path(@book.id) %>
+            <%= link_to books.title, book_path(books.id) %>
           </td>
           <td>
-            <%= @book.body %>
+            <%= books.body %>
           </td>
         </tr>
+        <% end %>
       </tbody>
     </table>
 </div>
