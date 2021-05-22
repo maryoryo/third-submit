@@ -3,7 +3,7 @@
 <div class="container px-5 px-sm-0">
 
 
-<%= render 'books/list', user: @user, book: @book %>
+<%= render 'books/list', user: @book_user, book: @book %>
 
 
 <div class="col-md-8 offset-md-1">
@@ -14,29 +14,33 @@
   	    <tr>
           <td class="text-center">          
     	      <%#= link_to (attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60'), (@user.name), user_path(@user.id) %>
-    	      <%= link_to user_path(@bookes.user) do %>
-    	      <%= attachment_image_tag @bookes.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %><br/>
-    	      <%= @bookes.user.name %>
+    	      <%= link_to user_path(@books.user) do %>
+    	      <%= attachment_image_tag @books.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %><br/>
+    	      <%= @books.user.name %>
     	      <% end %>
     	      <%#= attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
     	      <%#= link_to @user.name, user_path(@user.id) %>
     	    </td>
           <td>
-            <%= link_to @bookes.title, book_path(@bookes) %>
+            <%= link_to @books.title, book_path(@books) %>
+            
           </td>
           <td>
-            <%= @bookes.body %>
+            <%= @books.body %>
+            
           </td>
+          <% if @book_user.id == current_user.id %>
           <td>
             <!--<a class="btn btn-sm btn-success edit_book_35026" href="/books/35026/edit">Edit</a>-->
-            <% if @user == current_user %>
-            <%= link_to "Edit", edit_book_path(@bookes), class:"btn btn-sm btn-success" %>
+            
+            <%= link_to "Edit", edit_book_path(@books), class:"btn btn-sm btn-success" %>
           </td>
           <td>
             <%# if @book.user == current_user %>
-            <%= link_to "Destroy", book_path(@bookes), method: :delete, class:"btn btn-sm btn-danger" %>
-            <% end %>
+            <%= link_to "Destroy", book_path(@books), method: :delete, class:"btn btn-sm btn-danger" %>
+            
           </td>
+          <% end %>
         </tr>
         <%# end %>
       </tbody>

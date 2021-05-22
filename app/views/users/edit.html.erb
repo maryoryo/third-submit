@@ -15,7 +15,7 @@
   		</div>
     
     <%= form_with model: @user, local: true do |t| %>
-       <form> 
+       
         <div class="form-group">
           <label for="user_name">Name</label>
           <!--<input class="form-control name" type="text" value="1111" name="user[name]" id="user_name">-->
@@ -36,7 +36,6 @@
           <%= t.submit "Update User", class:"btn btn-secondary" %>
         </div>
         
-      </form>
       <% end %>
     </div>
   </div>
