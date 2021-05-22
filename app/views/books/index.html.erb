@@ -21,11 +21,11 @@
         </thead>
         <tbody>
           <% @books.each do |books| %>
-          <% @users.each do |users| %>
+          <%# @users.each do |users| %>
           <tr>
             
             <td>
-              <%= link_to (attachment_image_tag users, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60'), user_path(users.id) %>
+              <%= link_to (attachment_image_tag books.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60'), user_path(books.user) %>
             </td>
             <td>
               <%= link_to books.title, book_path(books.id) %>
@@ -33,7 +33,7 @@
             <td>
               <%= books.body %>
             </td>
-            <% end %>
+            <%# end %>
             <% end %>
           </tr>
         </tbody>

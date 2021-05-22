@@ -7,11 +7,9 @@
     <div class="col-md-3">
       <h2>User info</h2>
       <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'100x100' %>
-      <%#= image_tag('person.jpg') %>
-      <!--<img class="attachment user profile_image fallback" src="/assets/no_image-ede28af4bad96368ef41be1b4be1cffce0d9402540f75d17895e32cb0d2af5e6.jpg">-->
       
       <table class="table">
-        <%# @user.each do |users| %>
+        <%# @users.each do |users| %>
         <tbody>
           <tr>
             <th>name</th>

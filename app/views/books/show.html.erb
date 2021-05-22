@@ -10,35 +10,35 @@
   <h2>Book detail</h2>
   	<table class="table">
   		<tbody>
-  		  <% @books.each do |books| %>
+  		  <%# @books.each do |books| %>
   	    <tr>
           <td class="text-center">          
     	      <%#= link_to (attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60'), (@user.name), user_path(@user.id) %>
-    	      <%= link_to user_path(@user.id) do %>
-    	      <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %><br/>
-    	      <%= @user.name %>
+    	      <%= link_to user_path(@bookes.user) do %>
+    	      <%= attachment_image_tag @bookes.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %><br/>
+    	      <%= @bookes.user.name %>
     	      <% end %>
     	      <%#= attachment_image_tag @user, :profile_image_id, :fill, 60, 60, fallback: "no_image.jpg", size:'60x60' %>
     	      <%#= link_to @user.name, user_path(@user.id) %>
     	    </td>
           <td>
-            <%= link_to books.title, book_path(books.id) %>
+            <%= link_to @bookes.title, book_path(@bookes) %>
           </td>
           <td>
-            <%= books.body %>
+            <%= @bookes.body %>
           </td>
           <td>
             <!--<a class="btn btn-sm btn-success edit_book_35026" href="/books/35026/edit">Edit</a>-->
-            <% if @user==current_user %>
-            <%= link_to "編集", edit_book_path(books.id), class:"btn btn-sm btn-success" %>
+            <% if @user == current_user %>
+            <%= link_to "Edit", edit_book_path(@bookes), class:"btn btn-sm btn-success" %>
           </td>
           <td>
             <%# if @book.user == current_user %>
-            <%= link_to "削除", book_path(books.id), method: :delete, class:"btn btn-sm btn-danger" %>
+            <%= link_to "Destroy", book_path(@bookes), method: :delete, class:"btn btn-sm btn-danger" %>
             <% end %>
           </td>
         </tr>
-        <% end %>
+        <%# end %>
       </tbody>
     </table>
 </div>

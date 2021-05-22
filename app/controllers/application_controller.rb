@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_inactive_sign_up_path_for(resource)
-    user_path(current_user)
+    user_path(current_user.id)
   end
 
 
@@ -24,22 +24,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
   end
 
-  # def autheniticate_user
-  #   if @current_user==nil
-  #     flash[:notice]="ログインが必要です"
-  #     redirect_to new_user_session
-  #   end
-  # end
 
-  # def set_current_user
-  #   @current_user=User.find_by(id :session[:user_id])
-  # end
-
-  # def fobid_login_user
-  #   if @current_user
-  #     flash[:notice]="ログインしています"
-  #     redirect_to book_path
-  #   end
-  # end
 
 end

@@ -1,5 +1,9 @@
 class BooksController < ApplicationController
  
+ 
+ before_action :ensure_current_user, only: [:edit, :update] 
+  
+ 
   def index
     @user = current_user
     # @profile_images = current_user
@@ -26,22 +30,35 @@ class BooksController < ApplicationController
 
   
   def show
-    # @book = Book.find(params[:id])
+    @bookes = Book.find(params[:id])
     @book = Book.new
-    @user = @book.user
+    @user = current_user
+    @users = @book.user
     @books = Book.all
+    
+    
+    #@user = User.find(params[:id])
+    #@books = @user.books
+    #@book = Book.new
+    
+    
+    
+    
+    
+    
+    
   end
 
   def edit
     @books = Book.find(params[:id])
-    if @books != current_user
-      redirect_to
-    end
+    # if @books != current_user
+      # redirect_to 
+    # end
   end
   
   def update
     @books = Book.find(params[:id])
-    if  @books.update(books_params)
+    if @books.update(books_params)
       flash[:notice] = "You have updated book successfully."
       redirect_to book_path(@books.id)
     else
@@ -63,4 +80,10 @@ class BooksController < ApplicationController
     params.require(:book).permit(:title, :body)
   end
   
+  def ensure_current_user
+    @book = Book.find(params[:id])
+    unless @book.user == current_user
+      redirect_to books_path
+    end
+  end
 end
